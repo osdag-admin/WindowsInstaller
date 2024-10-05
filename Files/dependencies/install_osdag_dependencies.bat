@@ -52,6 +52,7 @@ call conda install .\zlib-1.2.11-h2fa13f4_1006.tar.bz2
 call conda install .\zstd-1.4.4-h9f78265_3.tar.bz2
 call conda install .\gl2ps-1.3.8-hfa6e2cd_4.tar.bz2
 call conda install .\freeimageplus-3.18.0-h6538335_2.tar.bz2
+call python -m pip install .\pip-24.0.tar.gz
 call pip install .\PyQt5-5.14.2-5.14.2-cp35.cp36.cp37.cp38-none-win_amd64.whl
 call pip install .\pdfkit-0.6.1.tar.gz
 call pip install .\PyYAML-5.3.1.tar.gz
@@ -62,9 +63,10 @@ call pip install .\PyLaTeX-1.3.1.tar.gz
 call pip install .\pdflatex-0.1.3.tar.gz
 call pip install .\keyring-21.2.1.tar.gz
 call pip install .\PyGithub-1.51.tar.gz
-call pip install .\pandas-1.0.5.tar.bz2
-call conda install .\pythonocc-core-0.18.2-py37h24bf2e0_281.tar.bz2
-call conda install .\oce-0.18.3-vc14_3.tar.bz2
+call pip install .\pandas-1.0.5-cp37-cp37m-win_amd64.whl
+call pip install .\pynput-1.6.8-py2.py3-none-any.whl
+call conda install .\pythonocc-core-0.18.2-py37he980bc4_0.tar.bz2
+call conda install .\oce-0.18.3-vc14_3.win64.tar.bz2
 call conda install .\smesh-6.7.6-vc14_7.tar.bz2
 call conda install .\tbb-2019.9-he980bc4_0.tar.bz2
 exit

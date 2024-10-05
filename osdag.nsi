@@ -109,9 +109,9 @@ Function update_path_miniconda
 
 	;This function adds the paths required by Miniconda3 to the Path variable
 
-	${EnvVarUpdate} $0 "PATH" "P" "HKLM" "$PROGRAMFILES32\miniconda3\Library\bin"
-	${EnvVarUpdate} $0 "PATH" "P" "HKLM" "$PROGRAMFILES32\miniconda3\Scripts"
-	${EnvVarUpdate} $0 "PATH" "P" "HKLM" "$PROGRAMFILES32\miniconda3"
+	${EnvVarUpdate} $0 "PATH" "P" "HKLM" "$INSTDIR\miniconda3\Library\bin"
+	${EnvVarUpdate} $0 "PATH" "P" "HKLM" "$INSTDIR\miniconda3\Scripts"
+	${EnvVarUpdate} $0 "PATH" "P" "HKLM" "$INSTDIR\miniconda3"
 	${EnvVarUpdate}	$0 "PATH" "P" "HKLM" "$INSTDIR"
 FunctionEnd
 
@@ -156,7 +156,7 @@ Section "OSDAG" SEC01
 		File "Files\Miniconda3-latest-Windows-x86_64.exe"
 
 		;This command silently installs Miniconda3
-		ExecWait "$TEMP\Miniconda3-latest-Windows-x86_64.exe /InstallationType=AllUsers /AddToPath=0 /RegisterPython=1 /S /D=$PROGRAMFILES32\miniconda3" $0
+		ExecWait "$TEMP\Miniconda3-latest-Windows-x86_64.exe /InstallationType=AllUsers /AddToPath=1 /RegisterPython=1 /S /D=$INSTDIR\miniconda3" $0
 		Call update_path_miniconda
 	SetDetailsPrint both
 
@@ -169,7 +169,7 @@ Section "OSDAG" SEC01
 		File /r "Files\dependencies\*.*"
 		nsExec::ExecToLog "$TEMP\dependencies\install_osdag_dependencies.bat"
 
-		SetOutPath "$PROGRAMFILES32\miniconda3\Lib\site-packages\"
+		SetOutPath "$INSTDIR\miniconda3\Lib\site-packages\"
 	SetDetailsPrint both
 	
 	Call RefreshProcessEnvironmentPath
@@ -218,9 +218,9 @@ Section "MIKTEX" SEC02
 	SetDetailsPrint listonly
 		SetOutPath $TEMP\latex
 		File /r "Files\latex\*.*"
-		ExecWait "$TEMP\latex\latex.exe"
+		ExecWait "$TEMP\latex\miktex-x64.exe"
 		Call RefreshProcessEnvironmentPath
-		ExecWait "$TEMP\latex\test.exe /S"
+		ExecWait "$TEMP\latex\latex_package_installer.exe /S"
 	SetDetailsPrint both
 	Call RefreshProcessEnvironmentPath
 	RMDir /r "$TEMP\latex\"
